@@ -12,21 +12,24 @@ export default class Juego extends Phaser.Scene {
     // init variables
     // take data passed from other scenes
     // data object param {}
-
     this.cantidadEstrellas = 0;
     console.log("Prueba !");
   }
 
   create() {
     // todo / para hacer: texto de puntaje
+    //Se agrega como funcion la key que con la que se cargo el tilemap en la precarga
     const map = this.make.tilemap({ key: "map" });
 
     // Parameters are the name you gave the tileset in Tiled and then the key of the tileset image in
     // Phaser's cache (i.e. the name you used in preload)
+    // para introducir la tilesetimage, se pone el parametro de TILES y el que se precargo en laa precarga
     const capaFondo = map.addTilesetImage("sky", "tilesFondo");
+    //lo mismo para platform, primero el nombre del de tiles y el segundo del de la precarga
     const capaPlataformas = map.addTilesetImage("platform", "tilesPlataforma");
 
     // Parameters: layer name (or index) from Tiled, tileset, x, y
+    //y para que aparezca en
     const fondoLayer = map.createLayer("fondo", capaFondo, 0, 0);
     const plataformaLayer = map.createLayer(
       "plataformas",
@@ -56,6 +59,7 @@ export default class Juego extends Phaser.Scene {
     this.salida = this.physics.add
       .sprite(spawnPoint.x, spawnPoint.y, "salida")
       .setScale(0.2);
+      this.salida.visible = false;
 
     //  Input Events
     this.cursors = this.input.keyboard.createCursorKeys();
@@ -129,15 +133,18 @@ export default class Juego extends Phaser.Scene {
     if (this.cursors.up.isDown && this.jugador.body.blocked.down) {
       this.jugador.setVelocityY(-330);
     }
+    console.log(this.estrellas.getTotalUsed());
   }
 
   recolectarEstrella(jugador, estrella) {
     estrella.disableBody(true, true);
-
+if (this.estrellas.getTotalUsed() <= 1) {
+  this.salida.visible = true
+};
     // todo / para hacer: sumar puntaje
     //this.cantidadEstrellas = this.cantidadEstrellas + 1;
     this.cantidadEstrellas++;
-
+    this.salida.visible = true;
     this.cantidadEstrellasTexto.setText(
       "Estrellas recolectadas: " + this.cantidadEstrellas
     );
@@ -155,4 +162,6 @@ export default class Juego extends Phaser.Scene {
       z: "este es otro atributo enviado a otro escena",
     });
   }
+
+
 }

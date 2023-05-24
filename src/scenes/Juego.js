@@ -138,13 +138,12 @@ export default class Juego extends Phaser.Scene {
 
   recolectarEstrella(jugador, estrella) {
     estrella.disableBody(true, true);
-if (this.estrellas.getTotalUsed() <= 1) {
+    if (this.estrellas.getTotalUsed() == 0) {
   this.salida.visible = true
 };
     // todo / para hacer: sumar puntaje
     //this.cantidadEstrellas = this.cantidadEstrellas + 1;
     this.cantidadEstrellas++;
-    this.salida.visible = true;
     this.cantidadEstrellasTexto.setText(
       "Estrellas recolectadas: " + this.cantidadEstrellas
     );

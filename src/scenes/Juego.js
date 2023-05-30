@@ -14,6 +14,7 @@ export default class Juego extends Phaser.Scene {
     // data object param {}
     this.cantidadEstrellas = 0;
     console.log("Prueba !");
+    this.timer = 30;
   }
 
   create() {
@@ -59,7 +60,7 @@ export default class Juego extends Phaser.Scene {
     this.salida = this.physics.add
       .sprite(spawnPoint.x, spawnPoint.y, "salida")
       .setScale(0.2);
-      this.salida.visible = false;
+    this.salida.visible = false;
 
     //  Input Events
     this.cursors = this.input.keyboard.createCursorKeys();
@@ -100,6 +101,12 @@ export default class Juego extends Phaser.Scene {
       () => this.cantidadEstrellas >= 1, // condicion de ejecucion
       this
     );
+    this.time.addEvent({
+      delay: 1000,
+      callback: this.timmer,
+      callbackScope: this,
+      loop: true,
+    });
 
     /// mostrar cantidadEstrella en pantalla
     this.cantidadEstrellasTexto = this.add.text(
@@ -108,6 +115,10 @@ export default class Juego extends Phaser.Scene {
       "Estrellas recolectadas: 0",
       { fontSize: "15px", fill: "#FFFFFF" }
     );
+    this.timeText = this.add.text(650, 16, "Tiempo " + this.timer, {
+      fontSize: "15px",
+      fill: "#FFFFFF",
+    });
   }
 
   update() {
@@ -139,8 +150,8 @@ export default class Juego extends Phaser.Scene {
   recolectarEstrella(jugador, estrella) {
     estrella.disableBody(true, true);
     if (this.estrellas.getTotalUsed() == 0) {
-  this.salida.visible = true
-};
+      this.salida.visible = true;
+    }
     // todo / para hacer: sumar puntaje
     //this.cantidadEstrellas = this.cantidadEstrellas + 1;
     this.cantidadEstrellas++;
@@ -161,6 +172,12 @@ export default class Juego extends Phaser.Scene {
       z: "este es otro atributo enviado a otro escena",
     });
   }
-
-
+  timmer() {
+    this.timer--;
+    console.log(this.timer);
+    this.timeText.setText("Tiempo " + this.timer);
+    if (this.timer == 0) {
+      this.isGameOver = true;
+    }
+  }
 }

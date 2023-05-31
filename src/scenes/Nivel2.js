@@ -27,8 +27,13 @@ export default class Juego extends Phaser.Scene {
 
     console.log("spawn point player", objectosLayer);
     // The player and its settings
-    this.jugador = this.physics.add.sprite(200, 400, "dude");
+    let spawnPoint = map.findObject(
+      "objetos",
+      (obj) => obj.name === "spawnPoint"
+    );
+    console.log(spawnPoint);
 
+    this.jugador = this.physics.add.sprite(spawnPoint.x, spawnPoint.y, "dude");
     //  Player physics properties. Give the little guy a slight bounce.
     this.jugador.setBounce(0.1);
     this.jugador.setCollideWorldBounds(true);
@@ -36,6 +41,6 @@ export default class Juego extends Phaser.Scene {
     this.physics.add.collider(this.jugador, plataformaLayer);
 
     this.cameras.main.startFollow(this.player);
-    this.cameras.main.setBounds(0, 0);
+    this.cameras.main.setBounds(0, 0, 500, 800);
   }
 }

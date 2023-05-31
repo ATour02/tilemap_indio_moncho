@@ -12,7 +12,7 @@ export default class Fin extends Phaser.Scene {
     // init variables
     // take data passed from other scenes
     // data object param {}
-    console.log(data);
+    console.log("esto es " + data.cantidadEstrellas);
     this.cantidadEstrellas = data.cantidadEstrellas;
   }
 
@@ -24,11 +24,9 @@ export default class Fin extends Phaser.Scene {
       { fontSize: "15px", fill: "#FFFFFF" }
     );
 
-    this.mensajeFinal = this.add.text(
-      45,
-      65,
-      "Fin",
-      {fontSize: "15px", fill: "#FFFFFF"}
-    );
+    this.mensajeFinal = this.add.text(45, 65, "Fin", {
+      fontSize: "15px",
+      fill: "#FFFFFF",
+    });
   }
 }

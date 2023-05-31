@@ -14,7 +14,7 @@ export default class Juego extends Phaser.Scene {
     // data object param {}
     this.cantidadEstrellas = 0;
     console.log("Prueba !");
-    this.timer = 30;
+    this.timer = 1;
   }
 
   create() {
@@ -101,6 +101,7 @@ export default class Juego extends Phaser.Scene {
       () => this.cantidadEstrellas >= 1, // condicion de ejecucion
       this
     );
+    //time
     this.time.addEvent({
       delay: 1000,
       callback: this.timmer,
@@ -174,10 +175,9 @@ export default class Juego extends Phaser.Scene {
   }
   timmer() {
     this.timer--;
-    console.log(this.timer);
     this.timeText.setText("Tiempo " + this.timer);
     if (this.timer == 0) {
-      this.isGameOver = true;
+      this.scene.start("nivel2");
     }
   }
 }

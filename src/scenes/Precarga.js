@@ -9,6 +9,7 @@ export default class Precarga extends Phaser.Scene {
   preload() {
     // load assets
     this.load.tilemapTiledJSON("map", "./public/tilemaps/nivel1.json");
+    this.load.tilemapTiledJSON("game2", "./public/tilemaps/nivel2.json");
     this.load.image("tilesFondo", "./public/images/sky.png");
     this.load.image("tilesPlataforma", "./public/images/platform.png");
 

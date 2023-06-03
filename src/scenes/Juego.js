@@ -14,7 +14,7 @@ export default class Juego extends Phaser.Scene {
     // data object param {}
     this.cantidadEstrellas = 0;
     console.log("Prueba !");
-    this.timer = 5;
+    this.timer = 45;
   }
 
   create() {
@@ -166,10 +166,9 @@ export default class Juego extends Phaser.Scene {
     // sacamos la condicion porque esta puesta como 4to parametro en el overlap
 
     console.log("estrellas recolectadas", this.cantidadEstrellas);
-
     this.scene.start("nivel2", {
       cantidadEstrellas: this.cantidadEstrellas,
-    });
+    })
   }
   timmer() {
     this.timer--;

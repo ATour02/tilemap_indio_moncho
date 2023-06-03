@@ -11,7 +11,7 @@ export default class Nivel3 extends Phaser.Scene {
       // data object param {}
       this.cantidadEstrellas = data.cantidadEstrellas || 0;
       console.log("Prueba !" + this.cantidadEstrellas);
-      this.timer = 5;
+      this.timer = 60;
     }
     create() {
       console.log("Prueba !" + this.cantidadEstrellas);

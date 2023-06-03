@@ -14,7 +14,7 @@ export default class Juego extends Phaser.Scene {
     // data object param {}
     this.cantidadEstrellas = 0;
     console.log("Prueba !");
-    this.timer = 1;
+    this.timer = 5;
   }
 
   create() {
@@ -167,10 +167,8 @@ export default class Juego extends Phaser.Scene {
 
     console.log("estrellas recolectadas", this.cantidadEstrellas);
 
-    this.scene.start("fin", {
+    this.scene.start("nivel2", {
       cantidadEstrellas: this.cantidadEstrellas,
-      y: "este es un dato de muestra",
-      z: "este es otro atributo enviado a otro escena",
     });
   }
   timmer() {

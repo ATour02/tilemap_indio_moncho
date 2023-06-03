@@ -174,7 +174,7 @@ export default class Nivel3 extends Phaser.Scene {
   
       console.log("estrellas recolectadas", this.cantidadEstrellas);
   
-      this.scene.start("fin", {
+      this.scene.start("win", {
         cantidadEstrellas: this.cantidadEstrellas,
         y: "este es un dato de muestra",
         z: "este es otro atributo enviado a otro escena",
@@ -184,7 +184,9 @@ export default class Nivel3 extends Phaser.Scene {
       this.timer--;
       this.timeText.setText("Tiempo " + this.timer);
      if (this.timer == 0) {
-      this.scene.start("fin");
+      this.scene.start("fin", {
+        cantidadEstrellas: this.cantidadEstrellas,
+      });
     }
   }
   }

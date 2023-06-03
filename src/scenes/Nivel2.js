@@ -174,7 +174,9 @@ update() {
     this.timer--;
     this.timeText.setText("Tiempo " + this.timer);
    if (this.timer == 0) {
-    this.scene.start("nivel3");
+    this.scene.start("fin",{
+      cantidadEstrellas: this.cantidadEstrellas,
+    });
   }
 }
 }

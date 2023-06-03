@@ -139,18 +139,6 @@
                 }, 
                 {
                  "height":0,
-                 "id":26,
-                 "name":"estrella",
-                 "point":true,
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":382.965713037781,
-                 "y":113.212491810439
-                }, 
-                {
-                 "height":0,
                  "id":27,
                  "name":"estrella",
                  "point":true,

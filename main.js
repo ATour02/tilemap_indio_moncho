@@ -3,6 +3,7 @@ import Precarga from "./src/scenes/Precarga.js";
 import Fin from "./src/scenes/Fin.js";
 import Nivel2 from "./src/scenes/Nivel2.js";
 import Nivel3 from "./src/scenes/Nivel3.js";
+import Win from "./src/scenes/Win.js";
 
 // Create a new Phaser config object
 const config = {
@@ -31,7 +32,7 @@ const config = {
   // List of scenes to load
   // Only the first scene will be shown
   // Remember to import the scene before adding it to the list
-  scene: [Precarga, Juego, Nivel2, Nivel3, Fin],
+  scene: [Precarga, Juego, Nivel2, Nivel3, Fin, Win],
 };
 
 // Create a new Phaser game instance

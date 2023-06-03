@@ -174,7 +174,9 @@ export default class Juego extends Phaser.Scene {
     this.timer--;
     this.timeText.setText("Tiempo " + this.timer);
     if (this.timer == 0) {
-      this.scene.start("nivel2");
+      this.scene.start("game2", {
+        cantidadEstrellas: this.cantidadEstrellas,
+      });
     }
   }
 }
